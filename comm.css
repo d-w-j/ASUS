@@ -1,0 +1,92 @@
+/*属性共有样式*/
+blockquote, body, button, dd, div, dl, dt, form, h1, h2, h3, h4, h5, h6, input, li, ol, p, pre, td, textarea, th, ul,a {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+body{
+    line-height: 24px;
+    display: block;
+    color: rgb(102, 102, 102);
+    font-family: "Microsoft Yahei", 微软雅黑, Tahoma, Arial, Helvetica, STHeiti;
+}
+/*标签元素属性*/
+div{
+    display: block;
+}
+a{
+    text-decoration: none;
+}
+h2{
+    font-size:24px;
+    font-weight: normal;
+    color: #4f4f4f;
+    line-height: 40px;
+    height:40px;
+}
+/*a表现内联样式*/
+form{
+    display: block;
+}
+ul{
+    list-style: none;
+    display: block;
+}
+input {
+    width: 300px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 14px;
+    border:1px solid #a29e9f;
+    padding: 0 0 0 4px;
+    outline: none;
+}
+button{
+    width: 40px;
+    height: 38px;
+    border: 1px solid #a29e9f;
+    background-color: #fff;
+    vertical-align: top;
+    box-sizing: content-box;
+    outline: none;
+    cursor:pointer;
+}
+/*居中共有元素*/
+.page{
+    width:1226px;
+    margin:0 auto;
+    overflow:hidden;
+}
+.include{
+    width:1200px;
+    margin:0 auto;
+    overflow: hidden;
+}
+/*鼠标悬停属性*/
+.nav-link:hover{
+    color:#007ffd;
+}
+/*左浮动*/
+.f1{
+    float: left;
+}
+.f2{
+    float:right;
+}
+/*绝对定位*/
+.pos-rel{
+    position: relative;
+}
+/*form表单样式*/
+.form-item{
+    margin-bottom:20px;
+    overflow: hidden;
+    text-align: center;
+}
+.form-act{
+    margin:0px;
+    display: block;
+    text-align: center;
+}
+
+
