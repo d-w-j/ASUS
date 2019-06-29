@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../CSS/comm.css">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <title>https://www.asus.com.cn/</title>
+</head>
+<body>
+<script src="../js/jquery-1.11.3.js"></script>
+<!--页头-->
+    <header>
+        <iframe src="header.html" frameborder="0" scrolling="no" class="my_header"></iframe>
+    </header>
+<!--body轮播图-->
+    <div class="banner">
+        <div class="page">
+                <div class="category_box">
+                    <ul class="category-list">
+                        <li class="category-item" style="margin-bottom: 11.25px; padding-top: 11.25px;">
+                           <a href="#" class="category-link"><span>笔记本电脑</span><span class="jiantou">></span></a>
+                        </li>
+                        <li class="category-item" style="margin-bottom: 11.25px; padding-top: 11.25px;">
+                           <a href="#" class="category-link"><span>ROG电竞专区</span><span class="jiantou">></span></a>
+                        </li>
+                        <li class="category-item" style="margin-bottom: 11.25px; padding-top: 11.25px;">
+                            <a href="#" class="category-link"><span>adol（a豆）专区</span><span class="jiantou">></span></a>
+                        </li>
+                        <li class="category-item" style="margin-bottom: 11.25px; padding-top: 11.25px;">
+                            <a href="#" class="category-link"><span>整机产品</span><span class="jiantou">></span></a>
+                        </li>
+                        <li class="category-item" style="margin-bottom: 11.25px; padding-top: 11.25px;">
+                           <a href="#" class="category-link"><span>DIV电脑配件</span><span class="jiantou">></span></a>
+                        </li>
+                        <li class="category-item" style="margin-bottom: 11.25px; padding-top: 11.25px;">
+                            <a href="#" class="category-link"><span>网路产品</span><span class="jiantou">></span></a>
+                        </li>
+                        <li class="category-item" style="margin-bottom: 11.25px; padding-top: 11.25px;">
+                            <a href="#" class="category-link"><span>Zenbo/多媒体产品</span><span class="jiantou">></span></a>
+                        </li>
+                        <li class="category-item" style="margin-bottom: 11.25px; padding-top: 11.25px;">
+                            <a href="#" class="category-link"><span>周边配件/增值服务</span><span class="jiantou">></span></a>
+                        </li>                                     
+                    </ul>
+                </div>
+                <div style="clear:both"></div>
+        </div>
+        <div class="main-slide" style="position:relative;">
+            <ul class="carousel" style="z-index:2;position:absolute;width:17280px;">
+                <li class="imgs" style="float:left;">
+                    <a href="#">
+                        <img src="../img/lunbo/1.jpg" alt="1">
+                    </a>
+                </li>
+                <li class="imgs" style="float:left;">
+                    <a href="#">
+                        <img src="../img/lunbo/1.jpg" alt="1">
+                    </a>
+                </li>
+                <li class="imgs" style="float:left;">
+                    <a href="#">
+                        <img src="../img/lunbo/2.jpg" alt="2">
+                    </a>
+                </li>
+                <li class="imgs" style="float:left;">
+                    <a href="#">
+                        <img src="../img/lunbo/3.jpg" alt="3">
+                    </a>
+                </li>
+                <li class="imgs" style="float:left;">
+                    <a href="#">
+                        <img src="../img/lunbo/4.jpg" alt="4">
+                    </a>
+                </li>
+                <li class="imgs" style="float:left;">
+                    <a href="#">
+                        <img src="../img/lunbo/5.jpg" alt="5">
+                    </a>
+                </li>
+                <li class="imgs" style="float:left;">
+                    <a href="#">
+                        <img src="../img/lunbo/6.jpg" alt="6">
+                    </a>
+                </li>
+                <li class="imgs" style="float:left;">
+                    <a href="#">
+                        <img src="../img/lunbo/7.jpg" alt="7">
+                    </a>
+                </li>
+                <li class="imgs" style="float:left;">
+                    <a href="#">
+                        <img src="../img/lunbo/1.jpg" alt="7">
+                    </a>
+                </li>
+            </ul>
+            <a class="arrows_left" style="left:581px">
+                <div class="arrows"></div>
+            </a>
+            <a class="arrows_right" style="right:234px;">
+                <div class="arrows" style="transform: rotate(225deg);margin-left:0px;"></div>
+            </a>
+            <ul class="slide-triggers">
+                <li class="trigger-item active" ></li>
+                <li class="trigger-item" ></li>
+                <li class="trigger-item" ></li>
+                <li class="trigger-item" ></li>
+                <li class="trigger-item" ></li>
+                <li class="trigger-item" ></li>
+                <li class="trigger-item" ></li>
+            </ul>
+         </div>
+    </div>
+<!--轮播图js-->
+<script>
+    var index=1;
+    var timer=null;
+    var size=$('ul.carousel').children().size();//图片的张数
+    var picWidth=$('li.imgs').width();//获取图片的宽度
+    var mainSlide=$('div.main-slide');
+    //鼠标移上去的时候图片轮播要暂停
+    mainSlide.mouseover(function(){
+        clearInterval(timer);
+    });
+    //鼠标移走的时候再次开始
+    mainSlide.mouseleave(function(){
+        autoSlide();
+    });
+    /*这里要调用这个函数。这里也是一个关键。
+     因为当你点进这个页面以后不管你鼠标放在哪里，图片都是要动的吧。
+     这样子写的意思就是触发这个.slide类的mouseover事件，
+     而上面那个是给这个元素绑定事件*/
+    $('.carousel').mouseleave();
+    //自动播放
+    function autoSlide(){
+        timer=setInterval(function(){
+            index++;//通过索引来控制图片嘛，每隔一段时间当然要让图片动起来。
+            changeImg();
+            changeDots();
+        },3000);//每隔1.5S就切换一次图片
+    };
+    // 图片切换函数
+    function changeImg(){
+        var slideWidth=-1*picWidth*index;//移动的距离
+        $('.carousel').animate({
+            'left':slideWidth+'px'//每次滑动一个图片的距离
+        },800);//500的意思是动画效果要在500ms内完成
+        if(index>=size-1){
+            /*这是关键之三，
+             当移动到最后一张图片的时候,
+             瞬间（animate函数最后那个0代表转换时间为0ms，所以就是一瞬间的事）
+             切换为第一张。*/
+            $('.carousel').animate({'left':-picWidth+'px'},0);// 图片切换过去
+            index=1;//索引要也切换为第一幅图的索引
+        }
+        if(index<1){
+            //要注意在执行下面这段函数之前，已经切换到图片C了。
+            $('.carousel').animate({'left':-(size-2)*picWidth+'px'},0);// 而这里便是无缝切换的代码
+            // (肉眼看不到),但实际已经切换到图片C了
+            index=size-2;
+        }
+    }
+    //小圆点切换的函数
+    function changeDots(){
+        //给当前的小圆点添加高亮的样式（active），然后把其他小圆点的样式去掉。
+        /*这里设置index-1的原因是因为点只有三个。
+         当图片的索引为1，圆点的索引为0
+         图片索引为2，圆点索引为1
+         所以我们可以看到一直都差1*/
+        $('.trigger-item').eq(index-1).addClass('active').siblings().removeClass('active');
+    }
+    //点击小圆点，切换到对应的图片
+    $('.trigger-item').hover(function(event){
+        var target=event.target;//获取点击到的小圆点，获取到的是一个DOM元素
+        //获取DOM元素的索引值。
+        index=$(target).index()+1;// +1的原因：看上面changeDots()的注释
+        changeImg();//改变图片
+        changeDots();// 小圆点的状态也要跟着变
+    });
+    // 点击下一张切换图片
+    $('.arrows_right').click(function(){
+        index++;
+        changeImg();
+        changeDots();
+    });
+    // 点击上一张切换图片
+    $('.arrows_left').click(function(){
+        index--;
+        changeImg();
+        changeDots();
+    });
+</script>
+<!--爆款清单-->
+     <div class="page">
+         <div>
+           <div>
+             <div class="common-header">
+                    <h2><i class="line"></i>爆款清单</h2>
+             </div>
+             <div class="btngroup">
+                 <span></span>
+                 <span></span>
+             </div>
+           </div>
+           <div class="pos-rel hot-sale">
+             <ul style="width:3430px;left:0px;position:absolute">
+                 <li class="hot_sale_item">
+                     <div class="hot_sale_pic">
+                         <a href="#">
+                             <img src="../img/shopping/1.png" alt="">
+                         </a>
+                     </div>
+                     <div class="hot_sale_name">
+                         <a href="#">
+                             <p class="common-intro common-intro-dark">adol （a豆） 笔记本13</p>
+                             <p class="common-intro common-intro-tint">13.3英寸   全面屏</p>
+                         </a>
+                     </div>
+                     <div class="hot_sale_price">￥4799</div>
+                     <p class="hot_sale_cost">￥5099</p>
+                 </li>
+                 <li class="hot_sale_item">
+                        <div class="hot_sale_pic">
+                            <a href="#">
+                                <img src="../img/shopping/2.png" alt="">
+                            </a>
+                        </div>
+                        <div class="hot_sale_name">
+                            <a href="#">
+                                <p class="common-intro common-intro-dark">破晓主流笔记本</p>
+                                <p class="common-intro common-intro-tint">15.6''   窄边框   超轻薄</p>
+                            </a>
+                        </div>
+                        <div class="hot_sale_price">￥4699</div>
+                        <p class="hot_sale_cost">￥4699</p>
+                 </li>
+                 <li class="hot_sale_item">
+                        <div class="hot_sale_pic">
+                            <a href="#">
+                                <img src="../img/shopping/3.png" alt="">
+                            </a>
+                        </div>
+                        <div class="hot_sale_name">
+                            <a href="#">
+                                <p class="common-intro common-intro-dark">飞行堡垒7 9代i7 </p>
+                                <p class="common-intro common-intro-tint">9代i7-9750H/GTX1650 4G显卡</p>
+                            </a>
+                        </div>
+                        <div class="hot_sale_price">￥6899 </div>
+                        <p class="hot_sale_cost">￥7999</p>
+                 </li>
+                 <li class="hot_sale_item">
+                        <div class="hot_sale_pic">
+                            <a href="#">
+                                <img src="../img/shopping/4.png" alt="">
+                            </a>
+                        </div>
+                        <div class="hot_sale_name">
+                            <a href="#">
+                                <p class="common-intro common-intro-dark">飞行堡垒6  火陨版</p>
+                                <p class="common-intro common-intro-tint">超窄边框   八代标压</p>
+                            </a>
+                        </div>
+                        <div class="hot_sale_price">￥6199</div>
+                        <p class="hot_sale_cost">￥6499</p>
+                 </li>
+                 <li class="hot_sale_item">
+                        <div class="hot_sale_pic">
+                            <a href="#">
+                                <img src="../img/shopping/5.png" alt="">
+                            </a>
+                        </div>
+                        <div class="hot_sale_name">
+                            <a href="#">
+                                <p class="common-intro common-intro-dark"> ROG 枪神3 Plus</p>
+                                <p class="common-intro common-intro-tint">RTX™2070   17.3''IPS屏</p>
+                            </a>
+                        </div>
+                        <div class="hot_sale_price">￥16999</div>
+                        <p class="hot_sale_cost">￥19999</p>
+                 </li>
+             </ul>
+           </div>
+        </div>
+     </div>
+<!--爆款清单下img与右侧固定客服栏-->     
+     <div class="page">
+         <div style="position:fixed;top:50%;margin-top:-100px;right:0px;z-index: 10001;">
+              <div class="im-bar" style="display:block;">
+                  <img src="../img/kefu.png">
+              </div>
+         </div>
+          <div class="ad_pic_float" style="margin-top:6px;display:block;">
+              <a href="#">
+                  <img src="../img/shopping/7.png">
+              </a>
+          </div>
+          <div class="banner pos-rel" style="min-width: 1220px;min-height: 120px;">
+              <a href="https://www.asus.com.cn/" target="_blank">
+                  <img src="../img/shopping/6.png" alt="">
+              </a>
+          </div>
+     </div>
+<!--商品展示栏-->
+<div class="product_module_wrap">
+<!--1F游戏专区-->
+     <div class="page">
+         <div>
+             <div class="m_top_header">
+                 <div class="common-header">
+                        <h2><i class="line"></i>1F  游戏专区</h2>
+                        <div class="more">
+                            <a href="#">更多</a>&nbsp;&nbsp;<span class="iconfont">></span>
+                        </div>
+                 </div>
+             </div>
+             <div class="m_left_ad">
+                 <div class="pos-rel banner">
+                     <a href="#">
+                         <img src="../img/shopping/8.jpg" alt="">
+                     </a>
+                 </div>
+             </div>
+             <div class="pos-rel m_middle_ad">
+                 <div>
+                     <div class="hs_tab_head">
+                         <ul>
+                             <li id="on" style="width:258.3px;" >新品</li>
+                             <li style="width:258.3px;" >飞行堡垒</li>
+                             <li style="width:258.3px;" >顽石</li>
+                         </ul>
+                     </div>
+                     <div class="hs_tab_body">
+                         <ul>
+                             <li class="tab_body_item" style="display:block">
+                                 <div class="modlule-slide" style="position: relative;">
+                                     <ul class="carousels" style="z-index:2;position:absolute;width:3885px;">
+                                         <li class="slide-item f1">
+                                             <a href="#">
+                                                 <img src="../img/shopping/9.png" alt="">
+                                             </a>
+                                         </li>
+                                         <li class="slide-item f1">
+                                             <a href="#">
+                                                 <img src="../img/shopping/9.png" alt="">
+                                             </a>
+                                         </li>
+                                         <li class="slide-item f1">
+                                                <a href="#">
+                                                    <img src="../img/shopping/10.png" alt="">
+                                                </a>
+                                        </li>
+                                         <li class="slide-item f1">
+                                             <a href="#">
+                                                 <img src="../img/shopping/11.png" alt="">
+                                             </a>
+                                         </li>
+                                         <li class="slide-item f1">
+                                             <a href="#">
+                                                 <img src="../img/shopping/9.png" alt="">
+                                             </a>
+                                         </li>
+                                     </ul>
+                                     <div class="arrow_left" style="left:0px;">
+                                         <div class="arrows"></div>
+                                     </div>
+                                     <div class="arrow_right" style="right:0px;">
+                                        <div class="arrows" style="transform: rotate(225deg);margin-left:0px;"></div>
+                                     </div>
+                                     <ul class="slide-trigger" style="left:45%">
+                                          <li class="trigger-items active" ></li>
+                                          <li class="trigger-items" ></li>
+                                          <li class="trigger-items" ></li>
+                                     </ul>
+                                 </div>
+    <script>/*1f轮播图*/
+        var indexs=1;
+        var timers=null;
+        var sizes=$('ul.carousels').children().size();
+        var picWidths=$('li.slide-item').width();
+        var mainSlides=$('div.modlule-slide');
+        mainSlides.mouseover(function(){
+            clearInterval(timers);
+        });
+        mainSlides.mouseleave(function(){
+            autoSlides();
+        });
+        $('.carousels').mouseleave();
+        function autoSlides(){
+            timers=setInterval(function(){
+                indexs++;
+                changeImgs();
+                changeDotss();
+            },3000);
+        };
+        function changeImgs(){
+            var slideWidths=-1*picWidths*indexs;
+            $('.carousels').animate({
+                'left':slideWidths+'px'
+            },500);
+            if(indexs>=sizes-1){
+                $('.carousels').animate({'left':-picWidths+'px'},0);
+                indexs=1;
+            }
+            if(indexs<1){
+                $('.carousels').animate({'left':-(sizes-2)*picWidths+'px'},0);
+
+                indexs=sizes-2;
+            }
+        }
+        function changeDotss(){
+            $('.trigger-items').eq(indexs-1).addClass('active').siblings().removeClass('active');
+        }
+        $('.trigger-items').hover(function(event){
+            var targets=event.target;
+            indexs=$(targets).index()+1;
+            changeImgs();
+            changeDotss();
+        });
+        $('.arrow_right').click(function(){
+            indexs++;
+            changeImgs();
+            changeDotss();
+        });
+        $('.arrow_left').click(function(){
+            indexs--;
+            changeImgs();
+            changeDotss();
+        });
+    </script>
+                                 <div>
+                                     <div class="m_bottom_footer">
+                                         <div class="m_bottom_img">
+                                             <a  class="pos-rel" href="#">
+                                                 <img src="../img/shopping/12.png">
+                                             </a>
+                                         </div>
+                                         <div class="hot_sale_name">
+                                            <a href="#">
+                                                <p class="common-intro common-intro-dark">飞行堡垒7 9代i7</p>
+                                                <p class="common-intro common-intro-tint">9代i7-9750H/GTX1650 4G显卡</p>
+                                            </a>
+                                        </div>
+                                        <div class="hot_sale_price">
+                                                <span>￥6699</span>
+                                                <span class="hot_sale_cost" style="padding-left:15px;">￥7999</span>
+                                           </div>
+                                     </div>
+                                     <div class="m_bottom_footer">
+                                            <div class="m_bottom_img">
+                                                <a  class="pos-rel" href="#">
+                                                    <img src="../img/shopping/13.png">
+                                                </a>
+                                            </div>
+                                            <div class="hot_sale_name">
+                                               <a href="#">
+                                                   <p class="common-intro common-intro-dark">顽石畅玩版FL8700FJ</p>
+                                                   <p class="common-intro common-intro-tint">八代i7处理器 高清大屏</p>
+                                               </a>
+                                           </div>
+                                           <div class="hot_sale_price">
+                                                <span>￥5099</span>
+                                                <span class="hot_sale_cost" style="padding-left:15px;">￥5299</span>
+                                           </div>
+                                    </div>
+                                    <div class="m_bottom_footer">
+                                            <div class="m_bottom_img">
+                                                <a  class="pos-rel" href="#">
+                                                    <img src="../img/shopping/14.png">
+                                                </a>
+                                            </div>
+                                            <div class="hot_sale_name">
+                                               <a href="#">
+                                                   <p class="common-intro common-intro-dark">飞行堡垒7 锐龙标压 </p>
+                                                   <p class="common-intro common-intro-tint">R7-3750H/512G SSD</p>
+                                               </a>
+                                           </div>
+                                           <div class="hot_sale_price">
+                                                <span>￥5199</span>
+                                                <span class="hot_sale_cost" style="padding-left:15px;">￥6999</span>
+                                           </div>
+                                    </div>
+                                 </div>
+                             </li>
+                             <li style="display:none"></li>
+                             <li style="display:none"></li>
+                         </ul>
+                     </div>
+                 </div>
+             </div>
+             <div class="m_right_top pos-rel">
+                 <div class="sales-charts">
+                     <div class="hd">
+                         <h2>本类销售榜</h2>
+                     </div>
+                     <div style="overflow:hidden">
+                         <ul class="goods-list">
+                             <li class="goods-item hot">
+                                 <span class="goods-num on">1</span>
+                                 <div class="goods-pic f1">
+                                     <a href="#">
+                                         <img src="../img/shopping/12.png" alt="">
+                                     </a>
+                                 </div>
+                                 <div class="goods-info not">
+                                     <h3 class="goods-name"><a href="#" class="nav-link">飞行堡垒7 9代i7</a></h3>
+                                     <div class="goods-price">￥6899</div>
+                                 </div>
+                             </li>
+                             <li class="goods-item hot">
+                                <span class="goods-num on">2</span>
+                                <div class="goods-pic f1">
+                                    <a href="#">
+                                        <img src="../img/shopping/14.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="goods-info not">
+                                    <h3 class="goods-name"><a class="nav-link" href="#">飞行堡垒6  火陨版</a></h3>
+                                    <div class="goods-price">￥5399</div>
+                                </div>
+                            </li>
+                            <li class="goods-item hot">
+                                <span class="goods-num on">3</span>
+                                <div class="goods-pic f1">
+                                    <a href="#">
+                                        <img src="../img/shopping/15.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="goods-info not">
+                                    <h3 class="goods-name"><a class="nav-link" href="#">顽石畅玩版FL8700FJ</a></h3>
+                                    <div class="goods-price">￥5099</div>
+                                </div>
+                            </li>
+                            <li class="goods-item">
+                                <span class="goods-num">4</span>
+                                <div class="goods-info">
+                                    <h3 class="goods-name" style="margin-top:12px;"><a class="nav-link"href="#">飞行堡垒6  火陨版</a></h3>
+                                </div>
+                            </li>
+                            <li class="goods-item">
+                                <span class="goods-num">5</span>
+                                <div class="goods-info">
+                                    <h3 class="goods-name" style="margin-top:12px;"><a class="nav-link"href="#">新顽石5代游戏本</a></h3>
+                                </div>
+                            </li>
+                            <li class="goods-item">
+                                <span class="goods-num">6</span>
+                                <div class="goods-info">
+                                    <h3 class="goods-name" style="margin-top:12px;"><a class="nav-link"href="#">飞行堡垒6 Plus</a></h3>
+                                </div>
+                            </li>
+                            <li class="goods-item">
+                                <span class="goods-num">7</span>
+                                <div class="goods-info">
+                                    <h3 class="goods-name" style="margin-top:12px;"><a class="nav-link"href="#">顽石Y4000UB</a></h3>
+                                </div>
+                            </li>
+                            <li class="goods-item">
+                                <span class="goods-num">8</span>
+                                <div class="goods-info">
+                                    <h3 class="goods-name" style="margin-top:12px;"><a class="nav-link"href="#">飞行堡垒6  金属电竞版</a></h3>
+                                </div>
+                            </li>
+                         </ul>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+<!--2F轻薄专区-->
+    <div class="page">
+         <div>
+             <div class="m_top_header">
+                 <div class="common-header">
+                        <h2><i class="line"></i>2F  轻薄专区</h2>
+                        <div class="more">
+                            <a href="#">更多</a>&nbsp;&nbsp;<span class="iconfont">></span>
+                        </div>
+                 </div>
+             </div>
+             <div class="m_left_ad">
+                 <div class="pos-rel banner">
+                     <a href="#">
+                         <img src="../img/shopping/9.jpg" alt="">
+                     </a>
+                 </div>
+             </div>
+             <div class="pos-rel m_middle_ad">
+                 <div>
+                     <div class="hs_tab_head">
+                         <ul>
+                             <li id="on" style="width:155px;" >新品</li>
+                             <li style="width:155px;" >灵耀</li>
+                             <li style="width:155px;" >adol（a豆）</li>
+                             <li style="width:155px;" >办公商用本</li>
+                             <li style="width:155px;" >灵幻</li>
+                         </ul>
+                     </div>
+                     <div class="hs_tab_body">
+                         <ul>
+                             <li class="tab_body_item" style="display:block">
+                                 <div class="modlule-slide-two" style="position: relative;">
+                                     <ul class="carousel-two" style="z-index:2;position:absolute;width:3885px;">
+                                         <li class="slide-item-two f1">
+                                             <a href="#">
+                                                 <img src="../img/shopping/16.png" alt="">
+                                             </a>
+                                         </li>
+                                         <li class="slide-item-two f1">
+                                             <a href="#">
+                                                 <img src="../img/shopping/16.png" alt="">
+                                             </a>
+                                         </li>
+                                         <li class="slide-item-two f1">
+                                             <a href="#">
+                                                 <img src="../img/shopping/17.png" alt="">
+                                             </a>
+                                         </li>
+                                         <li class="slide-item-two f1">
+                                             <a href="#">
+                                                 <img src="../img/shopping/18.png" alt="">
+                                             </a>
+                                         </li>
+                                         <li class="slide-item-two f1">
+                                             <a href="#">
+                                                 <img src="../img/shopping/16.png" alt="">
+                                             </a>
+                                         </li>
+                                     </ul>
+                                     <div class="arrow_left_two" style="left:0px;">
+                                         <div class="arrows"></div>
+                                     </div>
+                                     <div class="arrow_right_two" style="right:0px;">
+                                         <div class="arrows" style="transform: rotate(225deg);margin-left:0px;"></div>
+                                     </div>
+                                     <ul class="slide-trigger-two" style="left:45%">
+                                         <li class="trigger-item-two active" ></li>
+                                         <li class="trigger-item-two" ></li>
+                                         <li class="trigger-item-two" ></li>
+                                     </ul>
+                                 </div>
+<script>/*2f轮播代码*/
+    var indexTwo=1;
+    var timerTwo=null;
+    var sizeTwo=$('ul.carousel-two').children().size();
+    var picWidthTwo=$('li.slide-item-two').width();
+    var mainSlideTwo=$('div.modlule-slide-two');
+    mainSlideTwo.mouseover(function(){
+        clearInterval(timerTwo);
+    });
+    mainSlideTwo.mouseleave(function(){
+        autoSlideTwo();
+    });
+    $('.carousel-two').mouseleave();
+    function autoSlideTwo(){
+        timerTwo=setInterval(function(){
+            indexTwo++;
+            changeImgTwo();
+            changeDotsTwo();
+        },3000);
+    };
+    function changeImgTwo(){
+        var slideWidthTwo=-1*picWidthTwo*indexTwo;
+        $('.carousel-two').animate({
+            'left':slideWidthTwo+'px'
+        },500);
+        if(indexTwo>=sizeTwo-1){
+            $('.carousel-two').animate({'left':-picWidthTwo+'px'},0);
+            indexTwo=1;
+        }
+        if(indexTwo<1){
+            $('.carousel-two').animate({'left':-(sizeTwo-2)*picWidthTwo+'px'},0);
+            indexTwo=sizeTwo-2;
+        }
+    }
+    function changeDotsTwo(){
+        $('.trigger-item-two').eq(indexTwo-1).addClass('active').siblings().removeClass('active');
+    }
+    $('.trigger-item-two').hover(function(event){
+        var targetTwo=event.target;
+        indexTwo=$(targetTwo).index()+1;
+        changeImgTwo();
+        changeDotsTwo();
+    });
+    $('.arrow_right_two').click(function(){
+        indexTwo++;
+        changeImgTwo();
+        changeDotsTwo();
+    });
+    $('.arrow_left_two').click(function(){
+        indexTwo--;
+        changeImgTwo();
+        changeDotsTwo();
+    });
+</script>
+                                 <div>
+                                     <div class="m_bottom_footer">
+                                         <div class="m_bottom_img">
+                                             <a  class="pos-rel" href="#">
+                                                 <img src="../img/shopping/19.png">
+                                             </a>
+                                         </div>
+                                         <div class="hot_sale_name">
+                                            <a href="#">
+                                                <p class="common-intro common-intro-dark">adol （a豆）笔记本13</p>
+                                                <p class="common-intro common-intro-tint">13.3英寸   全面屏</p>
+                                            </a>
+                                        </div>
+                                        <div class="hot_sale_price">
+                                            <span>￥3699</span>
+                                            <span class="hot_sale_cost" style="padding-left:15px;">￥3699</span>
+                                        </div>
+                                     </div>
+                                     <div class="m_bottom_footer">
+                                            <div class="m_bottom_img">
+                                                <a  class="pos-rel" href="#">
+                                                    <img src="../img/shopping/20.png">
+                                                </a>
+                                            </div>
+                                            <div class="hot_sale_name">
+                                               <a href="#">
+                                                   <p class="common-intro common-intro-dark">灵耀Deluxe14</p>
+                                                   <p class="common-intro common-intro-tint">92%全面屏   A4纸大小</p>
+                                               </a>
+                                           </div>
+                                           <div class="hot_sale_price">
+                                                <span>￥7999</span>
+                                                <span class="hot_sale_cost" style="padding-left:15px;">￥7999</span>
+                                           </div>
+                                    </div>
+                                    <div class="m_bottom_footer">
+                                            <div class="m_bottom_img">
+                                                <a  class="pos-rel" href="#">
+                                                    <img src="../img/shopping/21.png">
+                                                </a>
+                                            </div>
+                                            <div class="hot_sale_name">
+                                               <a href="#">
+                                                   <p class="common-intro common-intro-dark">adol （a豆）笔记本13</p>
+                                                   <p class="common-intro common-intro-tint">13.3英寸   全面屏</p>
+                                               </a>
+                                           </div>
+                                           <div class="hot_sale_price">
+                                                <span>￥4769</span>
+                                                <span class="hot_sale_cost" style="padding-left:15px;">￥5099</span>
+                                           </div>
+                                    </div>
+                                 </div>
+                             </li>
+                             <li style="display:none"></li>
+                             <li style="display:none"></li>
+                         </ul>
+                     </div>
+                 </div>
+             </div>
+             <div class="m_right_top pos-rel">
+                 <div class="sales-charts">
+                     <div class="hd">
+                         <h2>本类销售榜</h2>
+                     </div>
+                     <div style="overflow:hidden">
+                         <ul class="goods-list">
+                             <li class="goods-item hot">
+                                 <span class="goods-num on">1</span>
+                                 <div class="goods-pic f1">
+                                     <a href="#">
+                                         <img src="../img/shopping/22.png" alt="">
+                                     </a>
+                                 </div>
+                                 <div class="goods-info not">
+                                     <h3 class="goods-name"><a href="#" class="nav-link">灵耀S 2代 14英寸</a></h3>
+                                     <div class="goods-price">￥4599</div>
+                                 </div>
+                             </li>
+                             <li class="goods-item hot">
+                                <span class="goods-num on">2</span>
+                                <div class="goods-pic f1">
+                                    <a href="#">
+                                        <img src="../img/shopping/23.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="goods-info not">
+                                    <h3 class="goods-name"><a class="nav-link" href="#">adol （a豆）笔记本14</a></h3>
+                                    <div class="goods-price">￥4899</div>
+                                </div>
+                            </li>
+                            <li class="goods-item hot">
+                                <span class="goods-num on">3</span>
+                                <div class="goods-pic f1">
+                                    <a href="#">
+                                        <img src="../img/shopping/21.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="goods-info not">
+                                    <h3 class="goods-name"><a class="nav-link" href="#">adol （a豆） 笔记本13</a></h3>
+                                    <div class="goods-price">￥4796</div>
+                                </div>
+                            </li>
+                            <li class="goods-item">
+                                <span class="goods-num">4</span>
+                                <div class="goods-info">
+                                    <h3 class="goods-name" style="margin-top:12px;"><a class="nav-link"href="#">PX554FB</a></h3>
+                                </div>
+                            </li>
+                            <li class="goods-item">
+                                <span class="goods-num">5</span>
+                                <div class="goods-info">
+                                    <h3 class="goods-name" style="margin-top:12px;"><a class="nav-link"href="#">灵耀S 2代 15.6英寸</a></h3>
+                                </div>
+                            </li>
+                            <li class="goods-item">
+                                <span class="goods-num">6</span>
+                                <div class="goods-info">
+                                    <h3 class="goods-name" style="margin-top:12px;"><a class="nav-link"href="#">灵耀Deluxe14数字键盘版</a></h3>
+                                </div>
+                            </li>
+                            <li class="goods-item">
+                                <span class="goods-num">7</span>
+                                <div class="goods-info">
+                                    <h3 class="goods-name" style="margin-top:12px;"><a class="nav-link"href="#">灵耀U4100UN</a></h3>
+                                </div>
+                            </li>
+                            <li class="goods-item">
+                                <span class="goods-num">8</span>
+                                <div class="goods-info">
+                                    <h3 class="goods-name" style="margin-top:12px;"><a class="nav-link"href="#">灵耀S 2代</a></h3>
+                                </div>
+                            </li>
+                         </ul>
+                     </div>
+                 </div>
+             </div>
+         </div>
+    </div>
+<!--3F ROG电竞专区-->
+    <div class="page">
+        <div>
+            <div class="m_top_header">
+                <div class="common-header">
+                       <h2><i class="line"></i>3F ROG电竞专区</h2>
+                       <div class="more">
+                           <a href="#">更多</a>&nbsp;&nbsp;<span class="iconfont">></span>
+                       </div>
+                </div>
+            </div>
+            <div class="m_left_ad">
+                <div class="pos-rel banner">
+                    <a href="#">
+                        <img src="../img/shopping/10.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="pos-rel m_middle_ad">
+                <div>
+                    <div class="hs_tab_head">
+                        <ul>
+                            <li id="on" style="width:193.75px;" >新品</li>
+                            <li style="width:193.75px;" >电竞游戏本</li>
+                            <li style="width:193.75px;" >电竞游戏主机</li>
+                            <li style="width:193.75px;" >电竞DIY</li>
+                        </ul>
+                    </div>
+                    <div class="hs_tab_body">
+                        <ul>
+                            <li class="tab_body_item" style="display:block">
+                                <div class="modlule-slide-three" style="position: relative;">
+                                    <ul class="carousel-three" style="position: absolute;width:3108px;left:0px;">
+                                        <li class="slide-item-three f1">
+                                            <a href="#">
+                                                <img src="../img/shopping/24.png" alt="">
+                                            </a>
+                                        </li>
+                                        <li class="slide-item-three f1">
+                                            <a href="#">
+                                                <img src="../img/shopping/24.png" alt="">
+                                            </a>
+                                        </li>
+                                        <li class="slide-item-three f1">
+                                               <a href="#">
+                                                   <img src="../img/shopping/25.png" alt="">
+                                               </a>
+                                        </li>
+                                        <li class="slide-item-three f1">
+                                            <a href="#">
+                                                <img src="../img/shopping/24.png" alt="">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="arrow_left_three" style="left:0px;">
+                                        <div class="arrows"></div>
+                                    </div>
+                                    <div class="arrow_right_three" style="right:0px;">
+                                       <div class="arrows" style="transform: rotate(225deg);margin-left:0px;"></div>
+                                    </div>
+                                    <ul class="slide-trigger-three" style="left:45%">
+                                         <li class="trigger-item-three active" ></li>
+                                         <li class="trigger-item-three" ></li>
+                                   </ul>
+                                </div>
+  <!--3楼轮播代码-->
+  <script>
+       var indexThree=1;
+       var timerThree=null;
+       var sizeThree=$('ul.carousel-three').children().size();
+       var picWidthThree=$('li.slide-item-three').width();
+       var mainSlideThree=$('div.modlule-slide-three');
+       mainSlideThree.mouseover(function(){
+           clearInterval(timerThree);
+       });
+       mainSlideThree.mouseleave(function(){
+           autoSlideThree();
+       });
+       $('.carousel-three').mouseleave();
+       function autoSlideThree(){
+           timerThree=setInterval(function(){
+               indexThree++;
+               changeImgThree();
+               changeDotsThree();
+           },3000);
+       };
+       function changeImgThree(){
+           var slideWidthThree=-1*picWidthThree*indexThree;
+           $('.carousel-three').animate({
+               'left':slideWidthThree+'px'
+           },500);
+           if(indexThree>=sizeThree-1){
+               $('.carousel-three').animate({'left':-picWidthThree+'px'},0);
+               indexThree=1;
+           }
+           if(indexThree<1){
+               $('.carousel-three').animate({'left':-(sizeThree-2)*picWidthThree+'px'},0);
+               indexThree=sizeThree-2;
+           }
+       }
+       function changeDotsThree(){
+           $('.trigger-item-three').eq(indexThree-1).addClass('active').siblings().removeClass('active');
+       }
+       $('.trigger-item-three').hover(function(event){
+           var targetThree=event.target;
+           indexThree=$(targetThree).index()+1;
+           changeImgThree();
+           changeDotsThree();
+       });
+       $('.arrow_right_three').click(function(){
+           indexThree++;
+           changeImgThree();
+           changeDotsThree();
+       });
+       $('.arrow_left_three').click(function(){
+           indexThree--;
+           changeImgThree();
+           changeDotsThree();
+       });
+   </script>
+                                <div>
+                                    <div class="m_bottom_footer">
+                                        <div class="m_bottom_img">
+                                            <a  class="pos-rel" href="#">
+                                                <img src="../img/shopping/26.png">
+                                            </a>
+                                        </div>
+                                        <div class="hot_sale_name">
+                                           <a href="#">
+                                               <p class="common-intro common-intro-dark">ROG 枪神3</p>
+                                               <p class="common-intro common-intro-tint">RTX™2070   15.6''IPS屏</p>
+                                           </a>
+                                       </div>
+                                       <div class="hot_sale_price">
+                                           <span>￥17999</span>
+                                           <span class="hot_sale_cost" style="padding-left:15px;">￥19999</span>
+                                       </div>
+                                    </div>
+                                    <div class="m_bottom_footer">
+                                           <div class="m_bottom_img">
+                                               <a  class="pos-rel" href="#">
+                                                   <img src="../img/shopping/27.png">
+                                               </a>
+                                           </div>
+                                           <div class="hot_sale_name">
+                                              <a href="#">
+                                                  <p class="common-intro common-intro-dark">ROG 枪神2</p>
+                                                  <p class="common-intro common-intro-tint">专为FPS电竞射手打造</p>
+                                              </a>
+                                          </div>
+                                          <div class="hot_sale_price">
+                                               <span>￥11999</span>
+                                               <span class="hot_sale_cost" style="padding-left:15px;">￥13999</span>
+                                          </div>
+                                   </div>
+                                   <div class="m_bottom_footer">
+                                           <div class="m_bottom_img">
+                                               <a  class="pos-rel" href="#">
+                                                   <img src="../img/shopping/28.png">
+                                               </a>
+                                           </div>
+                                           <div class="hot_sale_name">
+                                              <a href="#">
+                                                  <p class="common-intro common-intro-dark">ROG 魔霸3</p>
+                                                  <p class="common-intro common-intro-tint">GTX1660Ti  15.6''IPS屏</p>
+                                              </a>
+                                          </div>
+                                          <div class="hot_sale_price">
+                                               <span>￥10999</span>
+                                               <span class="hot_sale_cost" style="padding-left:15px;">￥11999</span>
+                                          </div>
+                                   </div>
+                                </div>
+                            </li>
+                            <li style="display:none"></li>
+                            <li style="display:none"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="m_right_top pos-rel">
+                <div class="sales-charts">
+                    <div class="hd">
+                        <h2>本类销售榜</h2>
+                    </div>
+                    <div style="overflow:hidden">
+                        <ul class="goods-list">
+                            <li class="goods-item hot">
+                                <span class="goods-num on">1</span>
+                                <div class="goods-pic f1">
+                                    <a href="#">
+                                        <img src="../img/shopping/27.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="goods-info not">
+                                    <h3 class="goods-name"><a href="#" class="nav-link">ROG 枪神3</a></h3>
+                                    <div class="goods-price">￥17999</div>
+                                </div>
+                            </li>
+                            <li class="goods-item hot">
+                               <span class="goods-num on">2</span>
+                               <div class="goods-pic f1">
+                                   <a href="#">
+                                       <img src="../img/shopping/26.png" alt="">
+                                   </a>
+                               </div>
+                               <div class="goods-info not">
+                                   <h3 class="goods-name"><a class="nav-link" href="#">ROG 枪神3</a></h3>
+                                   <div class="goods-price">￥15999</div>
+                               </div>
+                           </li>
+                           <li class="goods-item hot">
+                               <span class="goods-num on">3</span>
+                               <div class="goods-pic f1">
+                                   <a href="#">
+                                       <img src="../img/shopping/28.png" alt="">
+                                   </a>
+                               </div>
+                               <div class="goods-info not">
+                                   <h3 class="goods-name"><a class="nav-link" href="#">ROG 魔霸3</a></h3>
+                                   <div class="goods-price">￥10999</div>
+                               </div>
+                           </li>
+                           <li class="goods-item">
+                               <span class="goods-num">4</span>
+                               <div class="goods-info">
+                                   <h3 class="goods-name" style="margin-top:12px;">
+                                    <a class="nav-link"href="#">ROG 冰刃3s Plus</a>
+                                   </h3>
+                               </div>
+                           </li>
+                           <li class="goods-item">
+                               <span class="goods-num">5</span>
+                               <div class="goods-info">
+                                   <h3 class="goods-name" style="margin-top:12px;">
+                                       <a class="nav-link"href="#">【新】ROG 枪神2S</a>
+                                   </h3>
+                               </div>
+                           </li>
+                           <li class="goods-item">
+                               <span class="goods-num">6</span>
+                               <div class="goods-info">
+                                   <h3 class="goods-name" style="margin-top:12px;">
+                                       <a class="nav-link"href="#">ROG冰刃新锐</a>
+                                    </h3>
+                               </div>
+                           </li>
+                           <li class="goods-item">
+                               <span class="goods-num">7</span>
+                               <div class="goods-info">
+                                   <h3 class="goods-name" style="margin-top:12px;">
+                                       <a class="nav-link"href="#">ROG 魔霸   Faker定制版</a>
+                                   </h3>
+                               </div>
+                           </li>
+                           <li class="goods-item">
+                               <span class="goods-num">8</span>
+                               <div class="goods-info">
+                                   <h3 class="goods-name" style="margin-top:12px;">
+                                       <a class="nav-link"href="#">ROG 枪神3 Plus</a>
+                                   </h3>
+                               </div>
+                           </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--4F 整机电脑-->
+    <div class="page">
+        <div>
+            <div class="m_top_header">
+                <div class="common-header">
+                       <h2><i class="line"></i>4F 整机电脑</h2>
+                       <div class="more">
+                           <a href="#">更多</a>&nbsp;&nbsp;<span class="iconfont">></span>
+                       </div>
+                </div>
+            </div>
+            <div class="m_left_ad">
+                <div class="pos-rel banner">
+                    <a href="#">
+                        <img src="../img/shopping/11.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="pos-rel m_middle_ad">
+                <div>
+                    <div class="hs_tab_head">
+                        <ul>
+                            <li id="on" style="width:258.3px;" >新品</li>
+                            <li style="width:258.3px;" >游戏主机</li>
+                            <li style="width:258.3px;" >一体机</li>
+                        </ul>
+                    </div>
+                    <div class="hs_tab_body">
+                        <ul>
+                            <li class="tab_body_item" style="display:block">
+                                <div class="modlule-slide" style="position: relative;">
+                                    <ul style="position: absolute;width:2331px;left:0px;">
+                                        <li class="slide-item f1">
+                                            <a href="#">
+                                                <img src="../img/shopping/29.png" alt="">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="slide_btn pave" style="left:0px;">
+                                        <div class="arrows_left"></div>
+                                    </div>
+                                    <div class="slide_btn next" style="right:0px;">
+                                       <div class="arrows_right"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="m_bottom_footer">
+                                        <div class="m_bottom_img">
+                                            <a  class="pos-rel" href="#">
+                                                <img src="../img/shopping/30.png">
+                                            </a>
+                                        </div>
+                                        <div class="hot_sale_name">
+                                           <a href="#">
+                                               <p class="common-intro common-intro-dark">傲视一体机V221</p>
+                                               <p class="common-intro common-intro-tint">纤薄优美   FHD背光宽屏</p>
+                                           </a>
+                                       </div>
+                                       <div class="hot_sale_price">
+                                           <span>￥3399</span>
+                                           <span class="hot_sale_cost" style="padding-left:15px;">￥4099</span>
+                                       </div>
+                                    </div>
+                                    <div class="m_bottom_footer">
+                                           <div class="m_bottom_img">
+                                               <a  class="pos-rel" href="#">
+                                                   <img src="../img/shopping/31.png">
+                                               </a>
+                                           </div>
+                                           <div class="hot_sale_name">
+                                              <a href="#">
+                                                  <p class="common-intro common-intro-dark">猎鹰V4 -白色</p>
+                                                  <p class="common-intro common-intro-tint">简洁时尚  疾速办公</p>
+                                              </a>
+                                          </div>
+                                          <div class="hot_sale_price">
+                                               <span>￥5199</span>
+                                               <span class="hot_sale_cost" style="padding-left:15px;">￥5799</span>
+                                          </div>
+                                   </div>
+                                   <div class="m_bottom_footer">
+                                           <div class="m_bottom_img">
+                                               <a  class="pos-rel" href="#">
+                                                   <img src="../img/shopping/32.png">
+                                               </a>
+                                           </div>
+                                           <div class="hot_sale_name">
+                                              <a href="#">
+                                                  <p class="common-intro common-intro-dark">傲世一体机-V241</p>
+                                                  <p class="common-intro common-intro-tint">930MX / 约2mm锋刃微框 / 23.8英寸FHD屏</p>
+                                              </a>
+                                          </div>
+                                          <div class="hot_sale_price">
+                                               <span>￥4099</span>
+                                               <span class="hot_sale_cost" style="padding-left:15px;">￥5299</span>
+                                          </div>
+                                   </div>
+                                </div>
+                            </li>
+                            <li style="display:none"></li>
+                            <li style="display:none"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="m_right_top pos-rel">
+                <div class="sales-charts">
+                    <div class="hd">
+                        <h2>本类销售榜</h2>
+                    </div>
+                    <div style="overflow:hidden">
+                        <ul class="goods-list">
+                            <li class="goods-item hot">
+                                <span class="goods-num on">1</span>
+                                <div class="goods-pic f1">
+                                    <a href="#">
+                                        <img src="../img/shopping/33.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="goods-info not">
+                                    <h3 class="goods-name"><a href="#" class="nav-link">傲世一体机V4000</a></h3>
+                                    <div class="goods-price">￥4549</div>
+                                </div>
+                            </li>
+                            <li class="goods-item hot">
+                               <span class="goods-num on">2</span>
+                               <div class="goods-pic f1">
+                                   <a href="#">
+                                       <img src="../img/shopping/34.png" alt="">
+                                   </a>
+                               </div>
+                               <div class="goods-info not">
+                                   <h3 class="goods-name"><a class="nav-link" href="#">傲世一体机Z6000</a></h3>
+                                   <div class="goods-price">￥9999</div>
+                               </div>
+                           </li>
+                           <li class="goods-item hot">
+                               <span class="goods-num on">3</span>
+                               <div class="goods-pic f1">
+                                   <a href="#">
+                                       <img src="../img/shopping/35.png" alt="">
+                                   </a>
+                               </div>
+                               <div class="goods-info not">
+                                   <h3 class="goods-name"><a class="nav-link" href="#">傲世一体机Z9000</a></h3>
+                                   <div class="goods-price">￥13999</div>
+                               </div>
+                           </li>
+                           <li class="goods-item">
+                               <span class="goods-num">4</span>
+                               <div class="goods-info">
+                                   <h3 class="goods-name" style="margin-top:12px;">
+                                    <a class="nav-link"href="#">傲世一体机V241</a>
+                                   </h3>
+                               </div>
+                           </li>
+                           <li class="goods-item">
+                               <span class="goods-num">5</span>
+                               <div class="goods-info">
+                                   <h3 class="goods-name" style="margin-top:12px;">
+                                       <a class="nav-link"href="#">ROG GL12CM</a>
+                                   </h3>
+                               </div>
+                           </li>
+                           <li class="goods-item">
+                               <span class="goods-num">6</span>
+                               <div class="goods-info">
+                                   <h3 class="goods-name" style="margin-top:12px;">
+                                       <a class="nav-link"href="#">ROG GD30</a>
+                                    </h3>
+                               </div>
+                           </li>
+                           <li class="goods-item">
+                               <span class="goods-num">7</span>
+                               <div class="goods-info">
+                                   <h3 class="goods-name" style="margin-top:12px;">
+                                       <a class="nav-link"href="#">ROG  G21</a>
+                                   </h3>
+                               </div>
+                           </li>
+                           <li class="goods-item">
+                               <span class="goods-num">8</span>
+                               <div class="goods-info">
+                                   <h3 class="goods-name" style="margin-top:12px;">
+                                       <a class="nav-link"href="#">傲世一体机 V221</a>
+                                   </h3>
+                               </div>
+                           </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--5F DIY外设专区--> 
+    <div class="page">
+        <div>
+            <div class="m_top_header">
+                <div class="common-header">
+                       <h2><i class="line"></i>5F  DIY外设专区</h2>
+                       <div class="more">
+                           <a href="#">更多</a>&nbsp;&nbsp;<span class="iconfont">></span>
+                       </div>
+                </div>
+            </div>
+            <div class="m_left_ad">
+                <div class="pos-rel banner">
+                    <a href="#">
+                        <img src="../img/shopping/12.jpg" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="pos-rel m_middle_ad">
+                <div>
+                    <div class="hs_tab_head">
+                        <ul>
+                            <li id="on" style="width:155px;" >新品</li>
+                            <li style="width:155px;" >主板</li>
+                            <li style="width:155px;" >显卡</li>
+                            <li style="width:155px;" >路由器</li>
+                            <li style="width:155px;" >显示器</li>
+                        </ul>
+                    </div>
+                    <div class="hs_tab_body">
+                        <ul>
+                            <li class="tab_body_item" style="display:block">
+                                <div class="modlule-slide-four" style="position: relative;">
+                                    <ul class="carousel-four" style="position: absolute;width:3108px;left:0px;">
+                                        <li class="slide-item-four f1">
+                                            <a href="#">
+                                                <img src="../img/shopping/36.png" alt="">
+                                            </a>
+                                        </li>
+                                        <li class="slide-item-four f1">
+                                            <a href="#">
+                                                <img src="../img/shopping/36.png" alt="">
+                                            </a>
+                                        </li>
+                                        <li class="slide-item-four f1">
+                                               <a href="#">
+                                                   <img src="../img/shopping/37.png" alt="">
+                                               </a>
+                                       </li>
+                                        <li class="slide-item-four f1">
+                                            <a href="#">
+                                                <img src="../img/shopping/36.png" alt="">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="arrow_left_four" style="left:0px;">
+                                        <div class="arrows"></div>
+                                    </div>
+                                    <div class="arrow_right_four" style="right:0px;">
+                                       <div class="arrows" style="transform: rotate(225deg);margin-left:0px;"></div>
+                                    </div>
+                                    <ul class="slide-trigger-four" style="left:45%">
+                                         <li class="trigger-item-four active" ></li>
+                                         <li class="trigger-item-four" ></li>
+                                    </ul>
+                                </div>
+ <script>/*5f轮播图*/
+     var indexfour=1;
+     var timerfour=null;
+     var sizefour=$('ul.carousel-four').children().size();
+     var picWidthfour=$('li.slide-item-four').width();
+     var mainSlidefour=$('div.modlule-slide-four');
+     mainSlidefour.mouseover(function(){
+         clearInterval(timerfour);
+     });
+     mainSlidefour.mouseleave(function(){
+         autoSlidefour();
+     });
+     $('.carousel-four').mouseleave();
+     function autoSlidefour(){
+         timerfour=setInterval(function(){
+             indexfour++;
+             changeImgfour();
+             changeDotsfour();
+         },3000);
+     };
+     function changeImgfour(){
+         var slideWidthfour=-1*picWidthfour*indexfour;
+         $('.carousel-four').animate({
+             'left':slideWidthfour+'px'
+         },500);
+         if(indexfour>=sizefour-1){
+             $('.carousel-four').animate({'left':-picWidthfour+'px'},0);
+             indexfour=1;
+         }
+         if(indexfour<1){
+             $('.carousel-four').animate({'left':-(sizefour-2)*picWidthfour+'px'},0);
+             indexfour=sizefour-2;
+         }
+     }
+     function changeDotsfour(){
+         $('.trigger-item-four').eq(indexfour-1).addClass('active').siblings().removeClass('active');
+     }
+     $('.trigger-item-four').hover(function(event){
+         var targetfour=event.target;
+         indexfour=$(targetfour).index()+1;
+         changeImgfour();
+         changeDotsfour();
+     });
+     $('.arrow_right_four').click(function(){
+         indexfour++;
+         changeImgfour();
+         changeDotsfour();
+     });
+     $('.arrow_left_four').click(function(){
+         indexfour--;
+         changeImgfour();
+         changeDotsfour();
+     });
+ </script>
+                                <div>
+                                    <div class="m_bottom_footer">
+                                        <div class="m_bottom_img">
+                                            <a  class="pos-rel" href="#">
+                                                <img src="../img/shopping/38.png">
+                                            </a>
+                                        </div>
+                                        <div class="hot_sale_name">
+                                           <a href="#">
+                                               <p class="common-intro common-intro-dark">新品ROG GT-AC2900</p>
+                                               <p class="common-intro common-intro-tint">新品上市，晒单送豪礼</p>
+                                           </a>
+                                       </div>
+                                       <div class="hot_sale_price">
+                                           <span>￥1399</span>
+                                           <span class="hot_sale_cost" style="padding-left:15px;">￥1999</span>
+                                       </div>
+                                    </div>
+                                    <div class="m_bottom_footer">
+                                           <div class="m_bottom_img">
+                                               <a  class="pos-rel" href="#">
+                                                   <img src="../img/shopping/39.png">
+                                               </a>
+                                           </div>
+                                           <div class="hot_sale_name">
+                                              <a href="#">
+                                                  <p class="common-intro common-intro-dark">VivoWatch BP 健康手表</p>
+                                                  <p class="common-intro common-intro-tint">运动健康手表 心率实时测量</p>
+                                              </a>
+                                          </div>
+                                          <div class="hot_sale_price">
+                                               <span>￥1299</span>
+                                               <span class="hot_sale_cost" style="padding-left:15px;">￥1999</span>
+                                          </div>
+                                   </div>
+                                   <div class="m_bottom_footer">
+                                           <div class="m_bottom_img">
+                                               <a  class="pos-rel" href="#">
+                                                   <img src="../img/shopping/40.png">
+                                               </a>
+                                           </div>
+                                           <div class="hot_sale_name">
+                                              <a href="#">
+                                                  <p class="common-intro common-intro-dark">RT-AC86U</p>
+                                                  <p class="common-intro common-intro-tint">双频全千兆 AiMesh</p>
+                                              </a>
+                                          </div>
+                                          <div class="hot_sale_price">
+                                               <span>￥999</span>
+                                               <span class="hot_sale_cost" style="padding-left:15px;">￥1029</span>
+                                          </div>
+                                   </div>
+                                </div>
+                            </li>
+                            <li style="display:none"></li>
+                            <li style="display:none"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="m_right_top pos-rel">
+                <div class="sales-charts">
+                    <div class="hd">
+                        <h2>本类销售榜</h2>
+                    </div>
+                    <div style="overflow:hidden">
+                        <ul class="goods-list">
+                            <li class="goods-item hot">
+                                <span class="goods-num on">1</span>
+                                <div class="goods-pic f1">
+                                    <a href="#">
+                                        <img src="../img/shopping/41.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="goods-info not">
+                                    <h3 class="goods-name"><a href="#" class="nav-link">ROG PNK Baby 甜心限定系列鼠标</a></h3>
+                                    <div class="goods-price">￥520</div>
+                                </div>
+                            </li>
+                            <li class="goods-item hot">
+                               <span class="goods-num on">2</span>
+                               <div class="goods-pic f1">
+                                   <a href="#">
+                                       <img src="../img/shopping/42.png" alt="">
+                                   </a>
+                               </div>
+                               <div class="goods-info not">
+                                   <h3 class="goods-name"><a class="nav-link" href="#">ROG 2070-O8G</a></h3>
+                                   <div class="goods-price">￥4999</div>
+                               </div>
+                           </li>
+                           <li class="goods-item hot">
+                               <span class="goods-num on">3</span>
+                               <div class="goods-pic f1">
+                                   <a href="#">
+                                       <img src="../img/shopping/43.png" alt="">
+                                   </a>
+                               </div>
+                               <div class="goods-info not">
+                                   <h3 class="goods-name"><a class="nav-link" href="#">PG279Q电竞显示器</a></h3>
+                                   <div class="goods-price">￥4599</div>
+                               </div>
+                           </li>
+                           <li class="goods-item">
+                               <span class="goods-num">4</span>
+                               <div class="goods-info">
+                                   <h3 class="goods-name" style="margin-top:12px;"><a class="nav-link"href="#">RT-AC86U</a></h3>
+                               </div>
+                           </li>
+                           <li class="goods-item">
+                               <span class="goods-num">5</span>
+                               <div class="goods-info">
+                                   <h3 class="goods-name" style="margin-top:12px;"><a class="nav-link"href="#">ROG Gladius II鼠标</a></h3>
+                               </div>
+                           </li>
+                           <li class="goods-item">
+                               <span class="goods-num">6</span>
+                               <div class="goods-info">
+                                   <h3 class="goods-name" style="margin-top:12px;"><a class="nav-link"href="#">PG348Q电竞显示器</a></h3>
+                               </div>
+                           </li>
+                           <li class="goods-item">
+                               <span class="goods-num">7</span>
+                               <div class="goods-info">
+                                   <h3 class="goods-name" style="margin-top:12px;"><a class="nav-link"href="#">ROG Claymore键盘</a></h3>
+                               </div>
+                           </li>
+                           <li class="goods-item">
+                               <span class="goods-num">8</span>
+                               <div class="goods-info">
+                                   <h3 class="goods-name" style="margin-top:12px;"><a class="nav-link"href="#">ROG7.1 电竞游戏耳机</a></h3>
+                               </div>
+                           </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ <!--键鼠/服务产品-->   
+    <div class="page">
+            <div class="m_top_header">
+                <div class="common-header">
+                       <h2><i class="line"></i>键鼠/服务产品</h2>
+                       <div class="more">
+                           <a href="#">更多</a>&nbsp;&nbsp;<span class="iconfont">></span>
+                       </div>
+                </div>
+            </div>
+            <div class="pos-rel">
+                <div class="f1">
+                    <div style="margin-bottom:18px">
+                        <a href="#">
+                            <img style="height:298px"src="../img/shopping/44.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="f2" style="width:980px;">
+                    <div class="hs-index hs-show">
+                        <div class="hs-index-img">
+                            <a href="#">
+                                <img src="../img/shopping/45.png" alt="">
+                            </a>
+                        </div>
+                        <div class="hot_sale_name">
+                            <a href="#">
+                                <p class="common-intro common-intro-dark">ROG PNK Baby 甜心限定系列键盘</p>
+                                <p class="common-intro common-intro-tint">粉色来袭 萌翻全场</p>
+                            </a>
+                        </div>
+                        <div class="hot_sale_price">
+                            <span>￥1314</span>
+                            <span class="hot_sale_cost" style="padding-left:15px;">￥1999</span>
+                        </div>
+                    </div>
+                    <div class="hs-index hs-show">
+                        <div class="hs-index-img">
+                            <a href="#">
+                                <img src="../img/shopping/46.png" alt="">
+                            </a>
+                        </div>
+                        <div class="hot_sale_name">
+                            <a href="#">
+                                <p class="common-intro common-intro-dark">adol（a豆）智能台灯</p>
+                                <p class="common-intro common-intro-tint">无线充电 国A级照度</p>
+                            </a>
+                        </div>
+                        <div class="hot_sale_price">
+                            <span>￥229</span>
+                            <span class="hot_sale_cost" style="padding-left:15px;">￥299</span>
+                        </div>
+                    </div>
+                    <div class="hs-index hs-show">
+                        <div class="hs-index-img">
+                            <a href="#">
+                                <img src="../img/shopping/47.png" alt="">
+                            </a>
+                        </div>
+                        <div class="hot_sale_name">
+                            <a href="#">
+                                <p class="common-intro common-intro-dark">ROG Delta电竞耳机</p>
+                                <p class="common-intro common-intro-tint">RW战队指定电竞游戏装备</p>
+                            </a>
+                        </div>
+                        <div class="hot_sale_price">
+                            <span>￥1299</span>
+                            <span class="hot_sale_cost" style="padding-left:15px;">￥1999</span>
+                        </div>
+                    </div>
+                    <div class="hs-index hs-show" style="margin-right:0px;">
+                        <div class="hs-index-img">
+                            <a href="#">
+                                <img src="../img/shopping/48.png" alt="">
+                            </a>
+                        </div>
+                        <div class="hot_sale_name">
+                            <a href="#">
+                                <p class="common-intro common-intro-dark">三年延保+三年意外险</p>
+                            </a>
+                        </div>
+                        <div class="hot_sale_price">
+                            <span>￥789</span>
+                            <span class="hot_sale_cost" style="padding-left:15px;">￥789</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+<!--A!有内容-->
+<div class="page">
+    <div class="m_top_header">
+        <div class="common-header">
+               <h2><i class="line"></i>A! 有内容</h2>
+               <div class="more">
+                   <a href="#">更多</a>&nbsp;&nbsp;<span class="iconfont">></span>
+               </div>
+        </div>
+    </div>
+    <div class="pos-rel hot_sale">
+        <ul>
+            <li class="f1 hs-show">
+                <h2>专业测评</h2>
+                <p>24小时长效影音续航 adol笔记本14评测</p>
+                <p class="common-intro common-intro-tint">来自中关村在线的专业测评</p>
+                <div>
+                    <img src="../img/shopping/49.png" alt="">
+                </div>
+            </li>
+            <li class="f1 hs-show">
+                <h2 style="color:#c000ff">技术分享</h2>
+                <p>3招解决系统卡顿</p>
+                <p class="common-intro common-intro-tint">开学你的电脑安排上了吗</p>
+                <div>
+                    <img src="../img/shopping/50.png" alt="">
+                </div>
+            </li>
+            <li class="f1 hs-show">
+                <h2 style="color:#ffae00">好货推荐</h2>
+                <p>ROG枪神3，把BWM装进笔记本里？</p>
+                <p class="common-intro common-intro-tint">超跑ROG，游戏本新形态</p>
+                <div>
+                    <img src="../img/shopping/51.png" alt="">
+                </div>
+            </li>
+            <li class="f1 hs-show" style="margin-right:0px;">
+                <h2 style="color:#ff4200">专业测评</h2>
+                <p>华硕获《Laptop Magazine》评选年度最佳笔电品牌全球第二、「创新」居冠</p>
+                <p class="common-intro common-intro-tint">《Laptop Magazine》：2019年品牌报告卡</p>
+                <div>
+                    <img src="../img/shopping/52.png" alt="">
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>  
+    <footer>
+        <iframe src="footer.html" frameborder="0" scrolling="no" class="my_footer"></iframe>
+    </footer> 
+</body>
+</html>

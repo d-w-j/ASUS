@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../CSS/comm.css">
+    <link rel="stylesheet" href="../CSS/login.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="pos-rel">
+        <header>
+            <div class="header-main">
+                <div class="page">
+                   <div>
+                       <a href="index.html">
+                           <img src="../img/LOGO1.png">
+                       </a>
+                   </div>
+                </div>
+            </div>
+        </header>
+        <div class="passport_box">
+            <div style="padding-top:75px;width:1200px;margin:0 auto;">
+                <img src="../img/shopping/13.jpg" alt="">
+            </div>
+            <div class="login_win">
+                <div class="signin">
+                    <div>
+                        <p >
+                          <a href="#">验证码登录</a>
+                          <i></i>
+                          <a href="#">账号登录</a>
+                        </p>
+                    </div>
+                </div>
+                <form action="/store/user/login/login.html" method="POST">
+                   <ul>
+                       <li class="form-item">
+                           <span class="form-act">
+                               <input class="x-input" type="text" placeholder="手机号">
+                           </span>
+                       </li>
+                       <li class="form-item">
+                        <span class="form-act" style="position: relative;">
+                            <input class="x-input" type="text" placeholder="短信验证码">
+                            <a class="btn-verify nav-link">获取验证码</a>
+                        </span>
+                       </li>
+                       <li class="form-item" style="margin-bottom:10px;">
+                        <span class="form-act" >
+                           <a class="btn-login" href="index.html" style="padding:0px;">立即登录</a>
+                        </span>
+                       </li>
+                       <li class="form-item">
+                           <a class="nav-link" href="#">企业用户注册</a>
+                           <a class="nav-link" href="#">注册ASUS会员账号</a>
+                           <a class="nav-link" href="#">忘记密码?</a>
+                       </li>
+                       <li class="form-item thrid-login">
+                           <div>
+                               <span>您可以使用社交账号</span>
+                               <span>直接登录<a style="padding:0px;color:#008aff;padding-left:5px;" href="#">华硕会员</a>，无需注册</span>
+                           </div>
+                           <span>
+                               <a href="#" style="padding:0px;">
+                                   <img src="../img/tubiao3.png" alt="">
+                               </a>
+                           </span>
+                       </li>
+                   </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
